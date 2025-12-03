@@ -9,7 +9,7 @@ repo_path = r"C:\Users\Theep\Downloads\Python Project"  # <-- change this
 commit_message = "Auto-save commit"
 
 # Time interval between saves (seconds)
-interval = 60  # every minute
+interval = 10  # every minute
 
 def has_changes():
     """Check if there are changes to commit."""
