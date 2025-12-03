@@ -1,0 +1,14 @@
+# Ignore Python compiled files
+*.pyc
+__pycache__/
+
+# Ignore environment files
+.env
+venv/
+
+# Ignore logs
+*.log
+
+# Ignore local scripts
+autosave.py
+local-scripts/
