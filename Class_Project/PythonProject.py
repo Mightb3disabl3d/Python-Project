@@ -2,15 +2,15 @@
 import secrets as s
 import tkinter as tk
 import string as str
-import tkinter.messagebox as messagebox
+from tkinter import messagebox
 
 root = tk.Tk()
 root.title("Password Generator")
-root.geometry("300x200")  # width x height
+root.geometry("400x400")  # width x height
 
 # Vars:
 
-length_var = tk.IntVar(value=12)
+length_var = tk.StringVar(value=12)
 mixed_var = tk.BooleanVar(value=False)
 num_var = tk.BooleanVar(value=False)
 sym_var = tk.BooleanVar(value=False)
@@ -29,7 +29,16 @@ def validate_number(new_value):
 vcmd = root.register(validate_number)
 
 def generate_password(length, use_mixed, use_num, use_sym):
-    return "TempPass123!"
+    characters = str.ascii_lowercase
+    if use_mixed:
+        characters += str.ascii_uppercase
+    if use_num:
+        characters += str.digits
+    if use_sym:
+        characters += str.punctuation
+
+    password = ''.join(s.choice(characters) for _ in range(length))
+    return password
 
 def generate():
     length = length_var.get()
@@ -37,7 +46,12 @@ def generate():
     use_num = num_var.get()
     use_sym = sym_var.get()
 
+    if not length:
+        messagebox.showerror("Error", "Please enter a password length.")
+        return
     
+    length = int(length)
+
     if length <= 0:
         messagebox.showerror("Error", "Password length must be greater than 0.")
         return
@@ -53,6 +67,7 @@ def generate():
     password_entry.config(state="readonly")  # Make it read-only
 
 # Password length
+tk.Label(root, text="Enter the desired password length:(1-64)").pack(pady=(12, 0))
 length_entry = tk.Entry(
     root,
     textvariable=length_var,
