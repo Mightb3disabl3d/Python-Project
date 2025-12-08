@@ -91,9 +91,6 @@ tk.Label(root, text="Generated Password:").pack()
 password_entry = tk.Entry(root, width=30, state="readonly", justify="center")
 password_entry.pack(pady=5)
 
-# Copy button
-
-
 # --- Run the GUI ---
 root.mainloop()
 
