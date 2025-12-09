@@ -23,7 +23,8 @@ def get_coin_price(coin='btc'):
 
 def depth_chart(coin='btc'):
     # Coinbase API URL for order book
-    url = f"https://api.exchange.coinbase.com/products/{coin.upper()}-USD/book"
+    
+    url = f"https://api.coinbase.com/api/v3/brokerage/products/{product_id}/book"
 
     # Parameters: level=2 for top 50 bids and asks
     params = {"level": 2}
